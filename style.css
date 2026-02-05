@@ -1,0 +1,263 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: center;
+  color: #0f172a;
+  overflow-x: hidden;
+
+  /* Animated gradient background */
+  background: linear-gradient(
+    -45deg,
+    #e0f2fe,
+    #bae6fd,
+    #f0f9ff,
+    #dbeafe,
+    #ecfeff
+  );
+  background-size: 500% 500%;
+  animation: bgMove 18s ease infinite;
+}
+
+/* =========================
+   FLOATING DECORATIONS
+========================= */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.25;
+  filter: blur(30px);
+  animation: float 12s ease-in-out infinite;
+}
+
+body::before {
+  top: -80px;
+  left: -80px;
+  background: radial-gradient(circle, #f472b6, #fb7185);
+}
+
+body::after {
+  bottom: -80px;
+  right: -80px;
+  background: radial-gradient(circle, #60a5fa, #22d3ee);
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(25px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   SCREEN CONTROL
+========================= */
+.screen {
+  display: none;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.screen.active {
+  display: block;
+  animation: fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   TITLES & TEXT
+========================= */
+h1, h2 {
+  color: #0c4a6e;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: 42px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+h2 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+/* =========================
+   BUTTONS (GLOW + BOUNCE)
+========================= */
+button {
+  padding: 14px 28px;
+  margin: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+
+  box-shadow: 0 6px 15px rgba(37,99,235,0.35);
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(37,99,235,0.45);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+/* =========================
+   LANGUAGE BUTTON AREA
+========================= */
+.language-box button {
+  min-width: 180px;
+}
+
+/* =========================
+   CARD DESIGN (GLASS EFFECT)
+========================= */
+.card {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  padding: 28px;
+  margin: 30px auto;
+  width: 340px;
+  max-width: 92%;
+  border-radius: 20px;
+
+  box-shadow:
+    0 15px 30px rgba(0,0,0,0.15),
+    inset 0 0 0 1px rgba(255,255,255,0.4);
+
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* =========================
+   ALPHABET DISPLAY
+========================= */
+#letter {
+  font-size: 90px;
+  color: #1e40af;
+  margin: 10px 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+#word {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#letterImg {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 12px auto;
+  display: block;
+}
+
+/* =========================
+   QUIZ & GAME
+========================= */
+#quizOptions button,
+#gameOptions button {
+  display: block;
+  width: 240px;
+  margin: 12px auto;
+}
+
+/* =========================
+   PROGRESS BAR (SMOOTH)
+========================= */
+.progress {
+  width: 85%;
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 20px;
+  margin: 20px auto 30px;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.5s ease;
+}
+
+/* =========================
+   RESULTS / FEEDBACK
+========================= */
+#quizResult,
+#gameResult {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+/* =========================
+   LESSON SCREEN
+========================= */
+#lesson .card p {
+  font-size: 21px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  #letter {
+    font-size: 70px;
+  }
+
+  .card {
+    width: 96%;
+  }
+}

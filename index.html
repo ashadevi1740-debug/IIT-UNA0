@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bhasha Mitra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= SPLASH ================= -->
+<div id="splash" class="screen active">
+  <h1 class="title">Bhasha Mitra</h1>
+  <p class="subtitle">Local Language Learning App</p>
+  <button onclick="go('welcome')">Start Learning</button>
+</div>
+
+<!-- ================= WELCOME ================= -->
+<div id="welcome" class="screen">
+  <h1 class="title">Bhasha Mitra</h1>
+
+  <p class="centered">
+    PM Shri Government Utkrisht Senior Secondary School<br>
+    Kangar, District-Una (H.P)
+  </p>
+
+  <p class="centered">
+    Built under guidance of<br>
+    <strong>Gurbaksh Singh</strong><br>
+    Vocational Teacher (ITES)
+  </p>
+
+  <button onclick="go('languages')">Continue</button>
+</div>
+
+<!-- ================= LANGUAGE SELECTION ================= -->
+<div id="languages" class="screen">
+  <h2 class="title">Select Language</h2>
+
+  <div class="language-box">
+    <button onclick="selectLanguage('hindi')">Hindi</button>
+    <button onclick="selectLanguage('punjabi')">Punjabi</button>
+  </div>
+
+  <div class="language-box">
+    <button onclick="selectLanguage('kangri')">Kangri</button>
+    <button onclick="selectLanguage('mandeali')">Mandeali</button>
+    <button onclick="selectLanguage('pahadi')">Pahadi</button>
+  </div>
+</div>
+
+<!-- ================= MENU ================= -->
+<div id="menu" class="screen">
+  <h2 id="langTitle" class="title"></h2>
+
+  <!-- Progress Bar -->
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+
+  <!-- Alphabet / Quiz / Game -->
+  <button id="btnAlphabet" onclick="startAlphabet()">Alphabet Learning</button>
+  <button id="btnQuiz" onclick="startQuiz()">Quiz</button>
+  <button id="btnGame" onclick="startGame()">Game</button>
+
+  <!-- Lesson -->
+  <button id="btnLesson" onclick="startLesson()">Lesson Learning</button>
+
+  <br><br>
+  <button onclick="go('languages')">Change Language</button>
+</div>
+
+<!-- ================= ALPHABET ================= -->
+<div id="alphabet" class="screen">
+  <h2 class="title">Alphabet Learning</h2>
+
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+
+  <div class="card centered">
+    <h1 id="letter"></h1>
+    <img id="letterImg" alt="Alphabet Image">
+    <p id="word"></p>
+  </div>
+
+  <button onclick="prevLetter()">◀</button>
+  <button onclick="playAudio()">🔊 Pronounce</button>
+  <button onclick="nextLetter()">▶</button>
+
+  <br><br>
+  <button onclick="go('menu')">Back</button>
+</div>
+
+<!-- ================= QUIZ ================= -->
+<div id="quiz" class="screen">
+  <h2 class="title">Quiz</h2>
+
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+
+  <p id="quizQuestion" class="centered"></p>
+  <div id="quizOptions"></div>
+  <p id="quizResult"></p>
+
+  <button onclick="nextQuiz()">Next Question</button>
+
+  <br><br>
+  <button onclick="go('menu')">Back</button>
+</div>
+
+<!-- ================= GAME ================= -->
+<div id="game" class="screen">
+  <h2 class="title">Drag & Match Game</h2>
+
+  <p id="gamePrompt" class="centered"></p>
+  <div id="gameOptions" class="centered"></div>
+  <p id="gameResult"></p>
+
+  <button onclick="newGame()">New Game</button>
+
+  <br><br>
+  <button onclick="go('menu')">Back</button>
+</div>
+
+<!-- ================= LESSON ================= -->
+<div id="lesson" class="screen">
+  <h2 class="title">Daily Lesson Learning</h2>
+
+  <div class="card centered">
+    <p><strong>English:</strong> <span id="lessonEnglish"></span></p>
+    <p><strong>Hindi:</strong> <span id="lessonHindi"></span></p>
+    <p><strong id="lessonLangName"></strong>:
+       <span id="lessonLocal"></span>
+    </p>
+  </div>
+
+  <button onclick="prevLesson()">◀</button>
+  <button onclick="playLessonAudio()">🔊 Pronounce</button>
+  <button onclick="nextLesson()">▶</button>
+
+  <br><br>
+  <button onclick="go('menu')">Back</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
